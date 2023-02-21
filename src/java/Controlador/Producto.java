@@ -31,7 +31,23 @@ public class Producto extends HttpServlet {
     String EDITAR = "VISTA/producto.jsp";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String acceso = "";
+        String action = request.getParameter("accion");
+        //========================================================================================== GLOBALES
+        String LOGIN = "views/Login.jsp";
+
+        switch (action) {
+            case "registro-clientes":
+                acceso = REGISTROS;
+                break;
+            case "eliminar":                
+            case "editar-a":
+            default:
+                acceso = REGISTROS;
+        }
+        RequestDispatcher view = request.getRequestDispatcher(acceso);
+        view.forward(request, response);
     }
 
     @Override
@@ -57,7 +73,7 @@ public class Producto extends HttpServlet {
                 acceso = REGISTROS;
                 break;
             case "editar-a":
-              
+
             case "Actualizar":
                 idProducto = Integer.parseInt(request.getParameter("txt-idProducto"));
                 proNombre = request.getParameter("txtNombre");
@@ -70,10 +86,8 @@ public class Producto extends HttpServlet {
                 DAO.add(productoActalizar);
                 acceso = REGISTROS;
                 break;
-
             default:
                 acceso = REGISTROS;
-
         }
         RequestDispatcher view = request.getRequestDispatcher(acceso);
         view.forward(request, response);
