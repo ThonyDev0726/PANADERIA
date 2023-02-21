@@ -28,7 +28,7 @@ public class Insumo extends HttpServlet {
     String EDITAR = "VISTA/insumo.jsp";
 
     @Override
- protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
         //========================================================================================== GLOBALES
@@ -38,7 +38,7 @@ public class Insumo extends HttpServlet {
             case "registro-clientes":
                 acceso = REGISTROS;
                 break;
-            case "eliminar":  
+            case "eliminar":
                 idInsumo = Integer.parseInt((String) request.getParameter("idInsumo"));
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.delete(idInsumo);
@@ -73,8 +73,8 @@ public class Insumo extends HttpServlet {
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(insumo);
                 acceso = REGISTROS;
-                break;            
-              
+                break;
+
             case "Actualizar":
                 idInsumo = Integer.parseInt(request.getParameter("txt-idInsumo"));
                 incNombre = request.getParameter("txtNombre");

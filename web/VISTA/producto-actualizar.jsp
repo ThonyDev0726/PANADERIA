@@ -128,11 +128,10 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
-                                <form action="Insumo" method="post">
+                                <form action="Producto" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Nombre</label>
@@ -146,10 +145,6 @@
                                             <label class="form-label">Cantidad</label>
                                             <input type="text" class="form-control" name="txtCantidad">
                                         </div>
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" name="txtTipo">
-                                        </div>                                       
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
                                             <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">

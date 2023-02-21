@@ -103,10 +103,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
-                                            <i class="bi bi-grid"></i>
-                                            <span>Usuario</span>
-                                        </a>-->
+<!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
+                        <i class="bi bi-grid"></i>
+                        <span>Usuario</span>
+                    </a>-->
                 </li>
             </ul>
         </aside><!-- End Sidebar-->
@@ -123,7 +123,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="p-2">
-
+                                    
                                 </div>
                             </div>
                         </div>
@@ -132,30 +132,36 @@
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
-                                <form action="Insumo" method="post">
-                                    <div class="row">
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" name="txtNombre">
+                                <form action="Cliente" method="post">
+                                        <div class="row">
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Cedula</label>
+                                                <input type="text" class="form-control" name="txt-cedula">
+                                            </div>
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Nombres</label>
+                                                <input type="text" class="form-control" name="txt-nombres">
+                                            </div>
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Apellidos</label>
+                                                <input type="text" class="form-control" name="txt-apellidos" >
+                                            </div>                                          
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Direccion</label>
+                                                <input type="text" class="form-control" name="txt-direccion">
+                                            </div>
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Telefono</label>
+                                                <input type="text" class="form-control" name="txt-telefono">
+                                            </div>
+
+
+                                            <div class="col-sm-2 m-b30">
+                                                <label class="form-label"> </label>
+                                                <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio">
-                                        </div>                                        
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad">
-                                        </div>
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" name="txtTipo">
-                                        </div>                                       
-                                        <div class="col-sm-2 m-b30">
-                                            <label class="form-label"> </label>
-                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
                             </div>
                         </div>
                     </div>
