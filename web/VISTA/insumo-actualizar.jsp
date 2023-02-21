@@ -136,29 +136,29 @@
                                        <%
                                         InsumoDao dao = new InsumoDao();
                                         int id = Integer.parseInt((String) request.getParameter("idInsumo"));
-                                        INSUMOS cli = (INSUMOS)dao.list(id);
+                                        INSUMOS inc = (INSUMOS)dao.list(id);
                                         %>
                                         <div class="row">
                                             <div class="col-sm-6 m-b30">
                                                 <label class="form-label">Cedula</label>
-                                                <input type="hidden" class="form-control" name="txt-idInsumo" <%= cli.getIdInsumo()%>">
-                                                <input type="text" class="form-control" name="txt-cedula" value="<%= cli.getCliCedula()%>">
+                                                <input type="hidden" class="form-control" name="txt-idInsumo" <%= inc.getIdInsumo()%>">
+                                                <input type="text" class="form-control" name="txt-cedula" value="<%= inc.geIncCedula()%>">
                                             </div>
                                             <div class="col-sm-6 m-b30">
                                                 <label class="form-label">Nombres</label>
-                                                <input type="text" class="form-control" name="txt-nombres" value="<%= cli.getCliNombres()%>">
+                                                <input type="text" class="form-control" name="txt-nombres" value="<%= inc.getIncNombres()%>">
                                             </div>
                                             <div class="col-sm-6 m-b30">
                                                 <label class="form-label">Apellidos</label>
-                                                <input type="text" class="form-control" name="txt-apellidos" value="<%= cli.getCliApellidos()%>" >
+                                                <input type="text" class="form-control" name="txt-apellidos" value="<%= inc.getIncApellidos()%>" >
                                             </div>                                          
                                             <div class="col-sm-6 m-b30">
                                                 <label class="form-label">Direccion</label>
-                                                <input type="text" class="form-control" name="txt-direccion" value="<%= cli.getCliDireccion()%>">
+                                                <input type="text" class="form-control" name="txt-direccion" value="<%= inc.getIncDireccion()%>">
                                             </div>
                                             <div class="col-sm-6 m-b30">
                                                 <label class="form-label">Telefono</label>
-                                                <input type="text" class="form-control" name="txt-telefono" value="<%= cli.getCliTelefono()%>">
+                                                <input type="text" class="form-control" name="txt-telefono" value="<%= inc.getIncTelefono()%>">
                                             </div>
 
 

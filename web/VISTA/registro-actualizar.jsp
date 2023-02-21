@@ -136,25 +136,25 @@
                                     <%
                                         RegistroDao dao = new RegistroDao();
                                         int id = Integer.parseInt((String) request.getParameter("idInsumo"));
-                                        REGISTROS cli = (REGISTROS)dao.list(id);
+                                        REGISTROS reg = (REGISTROS)dao.list(id);
                                         %>
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Nombre</label>
-                                            <input type="hidden" class="form-control" name="txt-idRegistro" <%= cli.getIdRegistro()%>">
-                                            <input type="text" class="form-control" name="txtNombre" value="<%= cli.getCliNombre()%>">
+                                            <input type="hidden" class="form-control" name="txt-idRegistro" <%= reg.getIdRegistro()%>">
+                                            <input type="text" class="form-control" name="txtNombre" value="<%= reg.getRegNombre()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio" value="<%= cli.getCliPrecio()%>">
+                                            <input type="text" class="form-control" name="txtPrecio" value="<%= reg.getRegPrecio()%>">
                                         </div>                                        
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad" value="<%= cli.getCliCantidad()%>">
+                                            <input type="text" class="form-control" name="txtCantidad" value="<%= reg.getRegCantidad()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" name="txtTipo" value="<%= cli.getCliTipo()%>">
+                                            <input type="text" class="form-control" name="txtTipo" value="<%= reg.getRegTipo()%>">
                                         </div>                                       
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>

@@ -135,21 +135,21 @@
                                      <%
                                         ProductoDao dao = new ProductoDao();
                                         int id = Integer.parseInt((String) request.getParameter("idProducto"));
-                                        PRODUCTOS cli = (PRODUCTOS)dao.list(id);
+                                        PRODUCTOS pro = (PRODUCTOS)dao.list(id);
                                     %>
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Nombre</label>
-                                             <input type="hidden" class="form-control" name="txt-idProducto" <%= cli.getIdProducto()%>">
-                                            <input type="text" class="form-control" name="txtNombre" value="<%= cli.getCliNombre()%>">
+                                             <input type="hidden" class="form-control" name="txt-idProducto" <%= pro.getIdProducto()%>">
+                                            <input type="text" class="form-control" name="txtNombre" value="<%= pro.getProNombre()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio" value="<%= cli.getCliPrecio()%>">
+                                            <input type="text" class="form-control" name="txtPrecio" value="<%= pro.getProPrecio()%>">
                                         </div>                                        
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad" value="<%= cli.getCliCantidad()%>">
+                                            <input type="text" class="form-control" name="txtCantidad" value="<%= pro.getProCantidad()%>">
                                         </div>
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
