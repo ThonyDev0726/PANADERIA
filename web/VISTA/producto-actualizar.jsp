@@ -132,18 +132,24 @@
                         <div class="card p-2">
                             <div class="card-body">
                                 <form action="Producto" method="post">
+                                     <%
+                                        ProductoDao dao = new ProductoDao();
+                                        int id = Integer.parseInt((String) request.getParameter("idProducto"));
+                                        PRODUCTOS cli = (PRODUCTOS)dao.list(id);
+                                    %>
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" name="txtNombre">
+                                             <input type="hidden" class="form-control" name="txt-idProducto" <%= cli.getIdProducto()%>">
+                                            <input type="text" class="form-control" name="txtNombre" value="<%= cli.getCliNombre()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio">
+                                            <input type="text" class="form-control" name="txtPrecio" value="<%= cli.getCliPrecio()%>">
                                         </div>                                        
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad">
+                                            <input type="text" class="form-control" name="txtCantidad" value="<%= cli.getCliCantidad()%>">
                                         </div>
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>

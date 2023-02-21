@@ -12,13 +12,13 @@
         <title>Insumos</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
-        <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="style">
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
         <!-- Favicons -->
         <link href="assets/img/favicon.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="style">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
         <!-- Google Fonts -->
         <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -103,10 +103,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
-                        <i class="bi bi-grid"></i>
-                        <span>Usuario</span>
-                    </a>-->
+                    <!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
+                                            <i class="bi bi-grid"></i>
+                                            <span>Usuario</span>
+                                        </a>-->
                 </li>
             </ul>
         </aside><!-- End Sidebar-->
@@ -114,7 +114,7 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Insumo</h1>                
+                <h1>Clientes</h1>                
             </div><!-- End Page Title -->
 
             <section class="section">
@@ -123,76 +123,45 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="p-2">
-                                    <form action="Insumo" method="post">
-                                        <div class="row">
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" name="txtNombre"> 
-                                            </div>
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Precio</label>
-                                                <input type="text" class="form-control" name="txtPrecio">
-                                            </div>                                        
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Cantidad</label>
-                                                <input type="text" class="form-control" name="txtCantidad">
-                                            </div>
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Tipo</label>
-                                                <input type="text" class="form-control" name="txtTipo">
-                                            </div>                                       
-                                            <div class="col-sm-2 m-b30">
-                                                <label class="form-label"> </label>
-                                                <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
-                                            </div>
-                                        </div>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="card p-2">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example" class="display" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center" scope="col">#</th>
-                                                <th class="text-center" scope="col">Nombre</th>
-                                                <th class="text-center" scope="col">Precio</th>
-                                                <th class="text-center" scope="col">Fecha de compra</th>
-                                                <th class="text-center" scope="col">Cantidad</th>
-                                                <th class="text-center" scope="col">Tipo</th>
-                                                <th class="text-center" scope="col">Accion</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <%
-                                                    InsumoDao daoCh = new InsumoDao();
-                                                    List<INSUMOS> listCh = daoCh.listar();
-                                                    Iterator<INSUMOS> iterCh = listCh.iterator();
-                                                    INSUMOS ch = null;
-                                                    while (iterCh.hasNext()) {
-                                                        ch = iterCh.next();
-                                            %>
-                                            <tr>
-                                                <th class="text-center" scope="row"><%= ch.getIdInsumo()%></th>
-                                                <td class="text-center"><%= ch.getIncNombre()%></td>
-                                                <td class="text-center"><%= ch.getIncPrecio()%></td>
-                                                <td class="text-center"><%= ch.getIncCompra()%></td>
-                                                <td class="text-center"><%= ch.getIncCantidad()%> unidades</td>
-                                                <td class="text-center"><%= ch.getIncTipo()%></td>
-                                                <td class="text-center">
-                                                    <a href="#" class="btn btn-warning">Actualizar</a>
-                                                    <a href="#" class="btn btn-danger">Eliminar</a>
-                                                </td>
-                                            </tr>
-                                            <%}%>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <form action="Insumo" method="post">
+                                    <%
+                                        RegistroDao dao = new RegistroDao();
+                                        int id = Integer.parseInt((String) request.getParameter("idInsumo"));
+                                        REGISTROS cli = (REGISTROS)dao.list(id);
+                                        %>
+                                    <div class="row">
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Nombre</label>
+                                            <input type="hidden" class="form-control" name="txt-idRegistro" <%= cli.getIdRegistro()%>">
+                                            <input type="text" class="form-control" name="txtNombre" value="<%= cli.getCliNombre()%>">
+                                        </div>
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Precio</label>
+                                            <input type="text" class="form-control" name="txtPrecio" value="<%= cli.getCliPrecio()%>">
+                                        </div>                                        
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Cantidad</label>
+                                            <input type="text" class="form-control" name="txtCantidad" value="<%= cli.getCliCantidad()%>">
+                                        </div>
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Tipo</label>
+                                            <input type="text" class="form-control" name="txtTipo" value="<%= cli.getCliTipo()%>">
+                                        </div>                                       
+                                        <div class="col-sm-2 m-b30">
+                                            <label class="form-label"> </label>
+                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -205,6 +174,11 @@
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+        </script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/chart.js/chart.umd.js"></script>
         <script src="assets/vendor/echarts/echarts.min.js"></script>
@@ -215,11 +189,6 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#example').DataTable();
-            });
-        </script>
     </body>
 
 </html>
