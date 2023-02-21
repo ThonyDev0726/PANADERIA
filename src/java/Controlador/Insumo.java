@@ -55,6 +55,8 @@ public class Insumo extends HttpServlet {
                 acceso = REGISTROS;
                 break;
             case "editar-a":
+              
+            case "Actualizar":
                 idInsumo = Integer.parseInt(request.getParameter("txt-idInsumo"));
                 incNombre = request.getParameter("txtNombre");
                 incPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
@@ -66,11 +68,6 @@ public class Insumo extends HttpServlet {
                 DAO.add(insumoActalizar);
                 acceso = REGISTROS;
                 break;
-            case "Actualizar":
-
-                acceso = REGISTROS;
-                break;
-
             default:
                 acceso = REGISTROS;
 

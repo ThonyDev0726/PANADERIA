@@ -64,6 +64,7 @@ public class Cliente extends HttpServlet {
             case "Registrar":
                 cliNombres = request.getParameter("txt-nombres");
                 cliApellidos = request.getParameter("txt-apellidos");
+                cliFecha = request.getParameter("txt-fecha");
                 cliCedula = request.getParameter("txt-cedula");
                 cliTelefono = request.getParameter("txt-telefono");
                 cliDireccion = request.getParameter("txt-direccion");
@@ -78,6 +79,7 @@ public class Cliente extends HttpServlet {
                 idCliente = Integer.parseInt(request.getParameter("txt-idCliente"));
                 cliNombres = request.getParameter("txt-nombres");
                 cliApellidos = request.getParameter("txt-apellidos");
+                cliFecha = request.getParameter("txt-fecha");
                 cliCedula = request.getParameter("txt-cedula");
                 cliTelefono = request.getParameter("txt-telefono");
                 cliDireccion = request.getParameter("txt-direccion");

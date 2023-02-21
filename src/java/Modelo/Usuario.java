@@ -6,6 +6,18 @@ public class Usuario {
     public String usuUsuario;
     public String usuClave;
 
+    public Usuario(String usuUsuario, String usuClave) {
+        this.usuUsuario = usuUsuario;
+        this.usuClave = usuClave;
+    }
+
+    public Usuario(Integer idUsuario, String usuUsuario, String usuClave) {
+        this.idUsuario = idUsuario;
+        this.usuUsuario = usuUsuario;
+        this.usuClave = usuClave;
+    }
+    
+    
     public Usuario() {
     }
 

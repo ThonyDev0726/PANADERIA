@@ -17,6 +17,14 @@ public class Producto {
         this.proPrecio = proPrecio;
         this.proElaboracion = proElaboracion;
     }
+
+    public Producto(Integer idProducto, String proNombre, Integer proCantidad, Float proPrecio, String proElaboracion) {
+        this.idProducto = idProducto;
+        this.proNombre = proNombre;
+        this.proCantidad = proCantidad;
+        this.proPrecio = proPrecio;
+        this.proElaboracion = proElaboracion;
+    }
     
 
     public Integer getIdProducto() {

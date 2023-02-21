@@ -57,11 +57,17 @@ public class Producto extends HttpServlet {
                 acceso = REGISTROS;
                 break;
             case "editar-a":
-                request.setAttribute("idCliente", request.getParameter("idCliente"));
-                acceso = EDITAR;
-                break;
+              
             case "Actualizar":
-
+                idProducto = Integer.parseInt(request.getParameter("txt-idProducto"));
+                proNombre = request.getParameter("txtNombre");
+                proCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+                proPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
+                proElaboracion = request.getParameter("txtElaboracion");
+                /* ========== DAR VALORES AL OBJETO =========*/
+                Modelo.Producto productoActalizar = new Modelo.Producto(idProducto, proNombre, proCantidad, proPrecio, proElaboracion);
+                /* ========== ENVIO EL OBJETO A LA DB=========*/
+                DAO.add(productoActalizar);
                 acceso = REGISTROS;
                 break;
 

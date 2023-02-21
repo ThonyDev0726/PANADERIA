@@ -7,6 +7,20 @@ public class Registro {
     public Integer regNumero;
     public String regTipo;
 
+    public Registro(String regFecha, Integer regNumero, String regTipo) {
+        this.regFecha = regFecha;
+        this.regNumero = regNumero;
+        this.regTipo = regTipo;
+    }
+
+    public Registro(Integer idRegistro, String regFecha, Integer regNumero, String regTipo) {
+        this.idRegistro = idRegistro;
+        this.regFecha = regFecha;
+        this.regNumero = regNumero;
+        this.regTipo = regTipo;
+    }
+    
+
     public Registro() {
     }
 
