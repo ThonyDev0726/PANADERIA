@@ -1,15 +1,15 @@
+<%-- 
+    Document   : login
+    Created on : 31 ene 2023, 20:49:21
+    Author     : perez
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-        <title>MyResume Bootstrap Template - Index</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <!-- Favicons -->
         <link href="assets/img/favicon.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -28,70 +28,29 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
-
     <body>
-
-        <!-- ======= Mobile nav toggle button ======= -->
-        <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-        <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-        <!-- ======= Header ======= -->
-        <header id="header" class="d-flex flex-column justify-content-center">
-
-            <nav id="navbar" class="navbar nav-menu">
-                <ul>
-                    <li><a href="#" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-                    <li><a href="Controller?accion=iniciar-sesion" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Iniciar sesion</span></a></li>
-                </ul>
-            </nav><!-- .nav-menu -->
-
-        </header><!-- End Header -->
-
-        <!-- ======= Hero Section ======= -->
-        <section id="hero" class="d-flex flex-column justify-content-center">
-            <div class="container" data-aos="zoom-in" data-aos-delay="100">
-                <h1>Bienvenido</h1>
-                <p>Se parte de la <span class="typed" data-typed-items="gestion, seguridad, facibilidad, diversion"></span></p>
-                <div class="social-links">
-                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4">
+                                <h2 class="fw-bold mb-4 text-uppercase">Login</h2>
+                                <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="typeEmailX">Usuario</label>
+                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="typePasswordX">Clave</label>
+                                    <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                                </div>
+                                <!--<button class="btn btn-outline-light btn-lg" type="submit">INICIAR SESION</button>-->
+                                <a class="btn btn-outline-light btn-lg" href="Controller?accion=dashboard">INICIAR SESION</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section><!-- End Hero -->
-
-
-        <!-- ======= Footer ======= -->
-        <footer id="footer">
-            <div class="container">
-                <div class="social-links">
-                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                </div>
-            </div>
-        </footer><!-- End Footer -->
-
-        <div id="preloader"></div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-        <!-- Vendor JS Files -->
-        <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-        <script src="assets/vendor/aos/aos.js"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/typed.js/typed.min.js"></script>
-        <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
-
-        <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
-
+        </div>
     </body>
-
 </html>

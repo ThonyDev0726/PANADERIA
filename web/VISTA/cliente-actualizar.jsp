@@ -119,37 +119,40 @@
 
             <section class="section">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="p-2">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
-                                <form action="Insumo" method="post">
+                                <form action="Cliente" method="post">
+                                    <%
+                                        ClienteDao dao = new ClienteDao();
+                                        int id = Integer.parseInt((String) request.getParameter("idCliente"));
+                                        CLIENTES cli = (CLIENTES)dao.list(id);
+                                    %>
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" name="txtNombre">
+                                            <label class="form-label">Cedula</label>
+                                            <input type="hidden" class="form-control" name="txt-idCliente" value="<%= cli.getIdCliente()%>">
+                                            <input type="text" class="form-control" name="txt-cedula" value="<%= cli.getCliCedula()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio">
-                                        </div>                                        
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad">
+                                            <label class="form-label">Nombres</label>
+                                            <input type="text" class="form-control" name="txt-nombres" value="<%= cli.getCliNombres()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" name="txtTipo">
-                                        </div>                                       
+                                            <label class="form-label">Apellidos</label>
+                                            <input type="text" class="form-control" name="txt-apellidos" value="<%= cli.getCliApellidos()%>">
+                                        </div>                                          
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Direccion</label>
+                                            <input type="text" class="form-control" name="txt-direccion" value="<%= cli.getCliDireccion()%>">
+                                        </div>
+                                        <div class="col-sm-6 m-b30">
+                                            <label class="form-label">Telefono</label>
+                                            <input type="text" class="form-control" name="txt-telefono" value="<%= cli.getCliTelefono()%>">
+                                        </div>
+
+
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
                                             <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">

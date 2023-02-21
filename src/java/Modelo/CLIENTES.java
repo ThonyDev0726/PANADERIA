@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Cliente{
+public class CLIENTES{
 
     public Integer idCliente;
     public String cliNombres;
@@ -10,10 +10,10 @@ public class Cliente{
     public String cliDireccion;
     public String cliTelefono;
 
-    public Cliente() {
+    public CLIENTES() {
     }
 
-    public Cliente(String cliNombres, String cliCedula, String cliApellidos, String cliFecha, String cliDireccion, String cliTelefono) {
+    public CLIENTES(String cliNombres, String cliCedula, String cliApellidos, String cliFecha, String cliDireccion, String cliTelefono) {
         this.cliNombres = cliNombres;
         this.cliCedula = cliCedula;
         this.cliApellidos = cliApellidos;
@@ -22,7 +22,7 @@ public class Cliente{
         this.cliTelefono = cliTelefono;
     }
 
-    public Cliente(Integer idCliente, String cliNombres, String cliCedula, String cliApellidos, String cliFecha, String cliDireccion, String cliTelefono) {
+    public CLIENTES(Integer idCliente, String cliNombres, String cliCedula, String cliApellidos, String cliFecha, String cliDireccion, String cliTelefono) {
         this.idCliente = idCliente;
         this.cliNombres = cliNombres;
         this.cliCedula = cliCedula;

@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Producto {
+public class PRODUCTOS {
 
     public Integer idProducto;
     public String proNombre;
@@ -8,17 +8,17 @@ public class Producto {
     public Float proPrecio;
     public String proElaboracion;
 
-    public Producto() {
+    public PRODUCTOS() {
     }
 
-    public Producto(String proNombre, Integer proCantidad, Float proPrecio, String proElaboracion) {
+    public PRODUCTOS(String proNombre, Integer proCantidad, Float proPrecio, String proElaboracion) {
         this.proNombre = proNombre;
         this.proCantidad = proCantidad;
         this.proPrecio = proPrecio;
         this.proElaboracion = proElaboracion;
     }
 
-    public Producto(Integer idProducto, String proNombre, Integer proCantidad, Float proPrecio, String proElaboracion) {
+    public PRODUCTOS(Integer idProducto, String proNombre, Integer proCantidad, Float proPrecio, String proElaboracion) {
         this.idProducto = idProducto;
         this.proNombre = proNombre;
         this.proCantidad = proCantidad;

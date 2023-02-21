@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Modelo.Insumo;
+import Modelo.INSUMOS;
 import java.util.List;
 
 /**
@@ -11,11 +11,11 @@ public interface crud_insumo {
 
     public List listar();
 
-    public Insumo list(int idInsumo);
+    public INSUMOS list(int idInsumo);
 
-    public String add(Insumo cli);
+    public String add(INSUMOS cli);
 
-    public String update(Insumo cli);
+    public String update(INSUMOS cli);
 
     public String delete(int id);
 

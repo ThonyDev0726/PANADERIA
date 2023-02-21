@@ -166,9 +166,9 @@
                                         <tbody>
                                             <%
                                                     ProductoDao daoCh = new ProductoDao();
-                                                    List<Producto> listCh = daoCh.listar();
-                                                    Iterator<Producto> iterCh = listCh.iterator();
-                                                    Producto ch = null;
+                                                    List<PRODUCTOS> listCh = daoCh.listar();
+                                                    Iterator<PRODUCTOS> iterCh = listCh.iterator();
+                                                    PRODUCTOS ch = null;
                                                     while (iterCh.hasNext()) {
                                                         ch = iterCh.next();
                                             %>

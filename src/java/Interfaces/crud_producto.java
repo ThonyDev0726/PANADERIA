@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Modelo.Producto;
+import Modelo.PRODUCTOS;
 import java.util.List;
 
 /**
@@ -11,11 +11,11 @@ public interface crud_producto {
 
     public List listar();
 
-    public Producto list(int idProducto);
+    public PRODUCTOS list(int idProducto);
 
-    public String add(Producto cli);
+    public String add(PRODUCTOS cli);
 
-    public String update(Producto cli);
+    public String update(PRODUCTOS cli);
 
     public String delete(int id);
 

@@ -2,7 +2,7 @@ package ModeloDao;
 
 import Conexion.Conexion;
 import Interfaces.crud_producto;
-import Modelo.Producto;
+import Modelo.PRODUCTOS;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductoDao implements crud_producto {
 
-    Producto c = new Producto();
+    PRODUCTOS c = new PRODUCTOS();
     Conexion cn = new Conexion();
     CallableStatement cs;
     Connection con;
@@ -27,13 +27,13 @@ public class ProductoDao implements crud_producto {
 
     @Override
     public List listar() {
-        ArrayList<Producto> lista = new ArrayList<>();
+        ArrayList<PRODUCTOS> lista = new ArrayList<>();
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR);
             rs = cs.executeQuery();
             while (rs.next()) {
-                Producto cli = new Producto();
+                PRODUCTOS cli = new PRODUCTOS();
                 cli.setIdProducto(rs.getInt(1));
                 cli.setProNombre(rs.getString(2));
                 cli.setProCantidad(rs.getInt(3));
@@ -49,7 +49,7 @@ public class ProductoDao implements crud_producto {
     }
 
     @Override
-    public Producto list(int id) {
+    public PRODUCTOS list(int id) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR_ID);
@@ -70,7 +70,7 @@ public class ProductoDao implements crud_producto {
     }
 
     @Override
-    public String add(Producto cli) {
+    public String add(PRODUCTOS cli) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(CREAR);
@@ -89,7 +89,7 @@ public class ProductoDao implements crud_producto {
     }
 
     @Override
-    public String update(Producto cli) {
+    public String update(PRODUCTOS cli) {
         try {
             con = (Connection) cn.getConexion();
             CallableStatement cs = con.prepareCall(ACTUALIZAR);

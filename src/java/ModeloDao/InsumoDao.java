@@ -2,8 +2,8 @@ package ModeloDao;
 
 import Conexion.Conexion;
 import Interfaces.crud_insumo;
-import Modelo.Cliente;
-import Modelo.Insumo;
+import Modelo.CLIENTES;
+import Modelo.INSUMOS;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class InsumoDao implements crud_insumo {
 
-    Insumo c = new Insumo();
+    INSUMOS c = new INSUMOS();
     Conexion cn = new Conexion();
     CallableStatement cs;
     Connection con;
@@ -28,13 +28,13 @@ public class InsumoDao implements crud_insumo {
 
     @Override
     public List listar() {
-        ArrayList<Insumo> lista = new ArrayList<>();
+        ArrayList<INSUMOS> lista = new ArrayList<>();
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR);
             rs = cs.executeQuery();
             while (rs.next()) {
-                Insumo cli = new Insumo();
+                INSUMOS cli = new INSUMOS();
                 cli.setIdInsumo(rs.getInt(1));
                 cli.setIncNombre(rs.getString(2));
                 cli.setIncPrecio(rs.getFloat(3));
@@ -51,7 +51,7 @@ public class InsumoDao implements crud_insumo {
     }
 
     @Override
-    public Insumo list(int id) {
+    public INSUMOS list(int id) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR_ID);
@@ -72,7 +72,7 @@ public class InsumoDao implements crud_insumo {
     }
 
     @Override
-    public String add(Insumo cli) {
+    public String add(INSUMOS cli) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(CREAR);
@@ -92,7 +92,7 @@ public class InsumoDao implements crud_insumo {
     }
 
     @Override
-    public String update(Insumo cli) {
+    public String update(INSUMOS cli) {
         try {
             con = (Connection) cn.getConexion();
             CallableStatement cs = con.prepareCall(ACTUALIZAR);

@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Insumo {
+public class INSUMOS {
 
     public Integer idInsumo;
     public String incNombre;
@@ -9,10 +9,10 @@ public class Insumo {
     public Integer incCantidad;
     public String incTipo;
 
-    public Insumo() {
+    public INSUMOS() {
     }
 
-    public Insumo(String incNombre, Float incPrecio, String incCompra, Integer incCantidad, String incTipo) {
+    public INSUMOS(String incNombre, Float incPrecio, String incCompra, Integer incCantidad, String incTipo) {
         this.incNombre = incNombre;
         this.incPrecio = incPrecio;
         this.incCompra = incCompra;
@@ -20,7 +20,7 @@ public class Insumo {
         this.incTipo = incTipo;
     }
 
-    public Insumo(Integer idInsumo, String incNombre, Float incPrecio, String incCompra, Integer incCantidad, String incTipo) {
+    public INSUMOS(Integer idInsumo, String incNombre, Float incPrecio, String incCompra, Integer incCantidad, String incTipo) {
         this.idInsumo = idInsumo;
         this.incNombre = incNombre;
         this.incPrecio = incPrecio;

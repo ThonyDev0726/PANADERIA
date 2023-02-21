@@ -171,9 +171,9 @@
                                         <tbody>
                                             <%
                                                     InsumoDao daoCh = new InsumoDao();
-                                                    List<Insumo> listCh = daoCh.listar();
-                                                    Iterator<Insumo> iterCh = listCh.iterator();
-                                                    Insumo ch = null;
+                                                    List<INSUMOS> listCh = daoCh.listar();
+                                                    Iterator<INSUMOS> iterCh = listCh.iterator();
+                                                    INSUMOS ch = null;
                                                     while (iterCh.hasNext()) {
                                                         ch = iterCh.next();
                                             %>

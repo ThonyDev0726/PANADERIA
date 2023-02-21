@@ -179,9 +179,9 @@
                                         <tbody>
                                             <%
                                                     ClienteDao daoCh = new ClienteDao();
-                                                    List<Cliente> listCh = daoCh.listar();
-                                                    Iterator<Cliente> iterCh = listCh.iterator();
-                                                    Cliente ch = null;
+                                                    List<CLIENTES> listCh = daoCh.listar();
+                                                    Iterator<CLIENTES> iterCh = listCh.iterator();
+                                                    CLIENTES ch = null;
                                                     while (iterCh.hasNext()) {
                                                         ch = iterCh.next();
                                             %>
@@ -195,7 +195,7 @@
                                                 <td class="text-center text-uppercase"><%= ch.getCliTelefono()%></td>
                                                 <td>
                                         <center>
-                                            <a href="#" class="btn btn-warning">Actualizar</a>
+                                            <a href="Cliente?accion=editar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-warning">Actualizar</a>
                                             <a href="#" class="btn btn-danger">Eliminar</a>
                                         </center>
                                         </td>

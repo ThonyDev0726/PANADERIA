@@ -67,7 +67,7 @@ public class Producto extends HttpServlet {
                 proPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
                 proCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Producto producto = new Modelo.Producto(proNombre, proCantidad, proPrecio, proElaboracion);
+                Modelo.PRODUCTOS producto = new Modelo.PRODUCTOS(proNombre, proCantidad, proPrecio, proElaboracion);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(producto);
                 acceso = REGISTROS;
@@ -81,7 +81,7 @@ public class Producto extends HttpServlet {
                 proPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
                 proElaboracion = request.getParameter("txtElaboracion");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Producto productoActalizar = new Modelo.Producto(idProducto, proNombre, proCantidad, proPrecio, proElaboracion);
+                Modelo.PRODUCTOS productoActalizar = new Modelo.PRODUCTOS(idProducto, proNombre, proCantidad, proPrecio, proElaboracion);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(productoActalizar);
                 acceso = REGISTROS;

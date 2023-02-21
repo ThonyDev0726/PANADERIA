@@ -2,7 +2,7 @@ package ModeloDao;
 
 import Conexion.Conexion;
 import Interfaces.crud_cliente;
-import Modelo.Cliente;
+import Modelo.CLIENTES;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClienteDao  implements crud_cliente{
 
-    Cliente c = new Cliente();
+    CLIENTES objeto = new CLIENTES();
     Conexion cn = new Conexion();
     CallableStatement cs;
     Connection con;
@@ -27,13 +27,13 @@ public class ClienteDao  implements crud_cliente{
 
     @Override
     public List listar() {
-        ArrayList<Cliente> lista = new ArrayList<>();
+        ArrayList<CLIENTES> lista = new ArrayList<>();
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR);
             rs = cs.executeQuery();
             while (rs.next()) {
-                Cliente cli = new Cliente();
+                CLIENTES cli = new CLIENTES();
                 cli.setIdCliente(rs.getInt(1));
                 cli.setCliCedula(rs.getString(2));
                 cli.setCliNombres(rs.getString(3));
@@ -51,30 +51,29 @@ public class ClienteDao  implements crud_cliente{
     }
 
     @Override
-    public Cliente list(int id) {
+    public CLIENTES list(int id) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR_ID);
             cs.setInt(1, id);
             rs = cs.executeQuery();
             while (rs.next()) {
-                c.setIdCliente(rs.getInt(1));
-                c.setCliCedula(rs.getString(2));
-                c.setCliNombres(rs.getString(3));
-                c.setCliApellidos(rs.getString(4));
-                c.setCliFecha(rs.getString(5));
-                c.setCliDireccion(rs.getString(6));
-                c.setCliTelefono(rs.getString(7));
+                objeto.setIdCliente(rs.getInt(1));
+                objeto.setCliCedula(rs.getString(2));
+                objeto.setCliNombres(rs.getString(3));
+                objeto.setCliApellidos(rs.getString(4));
+                objeto.setCliDireccion(rs.getString(5));
+                objeto.setCliTelefono(rs.getString(6));
             }
             System.out.println("SE ESTA LISTANDO EL Cliente");
         } catch (SQLException ex) {
             System.out.println("ERROR AL LISTAR LOS ClienteS" + ex);
         }
-        return c;
+        return objeto;
     }
 
     @Override
-    public String add(Cliente cli) {
+    public String add(CLIENTES cli) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(CREAR);
@@ -95,7 +94,7 @@ public class ClienteDao  implements crud_cliente{
     }
 
     @Override
-    public String update(Cliente cli) {
+    public String update(CLIENTES cli) {
         try {
             con = (Connection) cn.getConexion();
             CallableStatement cs = con.prepareCall(ACTUALIZAR);

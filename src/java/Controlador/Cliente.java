@@ -23,7 +23,7 @@ public class Cliente extends HttpServlet {
     public String cliTelefono;
     /**/
     String REGISTROS = "VISTA/cliente.jsp";
-    String EDITAR = "VISTA/cliente.jsp";
+    String EDITAR = "VISTA/cliente-actualizar.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class Cliente extends HttpServlet {
             case "registro-clientes":
                 acceso = REGISTROS;
                 break;
-            case "editar-a":
+            case "editar":
                 request.setAttribute("idCliente", request.getParameter("idCliente"));
                 acceso = EDITAR;
                 break;
@@ -69,7 +69,7 @@ public class Cliente extends HttpServlet {
                 cliTelefono = request.getParameter("txt-telefono");
                 cliDireccion = request.getParameter("txt-direccion");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Cliente cliente = new Modelo.Cliente(cliNombres, cliCedula, cliApellidos, cliFecha, cliDireccion, cliTelefono);
+                Modelo.CLIENTES cliente = new Modelo.CLIENTES(cliNombres, cliCedula, cliApellidos, cliFecha, cliDireccion, cliTelefono);
 
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(cliente);
@@ -84,7 +84,7 @@ public class Cliente extends HttpServlet {
                 cliTelefono = request.getParameter("txt-telefono");
                 cliDireccion = request.getParameter("txt-direccion");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Cliente clienteActualizar = new Modelo.Cliente(idCliente,cliNombres, cliCedula, cliApellidos, cliFecha, cliDireccion, cliTelefono);
+                Modelo.CLIENTES clienteActualizar = new Modelo.CLIENTES(idCliente,cliNombres, cliCedula, cliApellidos, cliFecha, cliDireccion, cliTelefono);
 
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.update(clienteActualizar);

@@ -69,7 +69,7 @@ public class Insumo extends HttpServlet {
                 incCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                 incTipo = request.getParameter("txtTipo");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Insumo insumo = new Modelo.Insumo(incNombre, incPrecio, incCompra, incCantidad, incTipo);
+                Modelo.INSUMOS insumo = new Modelo.INSUMOS(incNombre, incPrecio, incCompra, incCantidad, incTipo);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(insumo);
                 acceso = REGISTROS;
@@ -82,7 +82,7 @@ public class Insumo extends HttpServlet {
                 incCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                 incTipo = request.getParameter("txtTipo");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.Insumo insumoActalizar = new Modelo.Insumo(idInsumo, incNombre, incPrecio, incCompra, incCantidad, incTipo);
+                Modelo.INSUMOS insumoActalizar = new Modelo.INSUMOS(idInsumo, incNombre, incPrecio, incCompra, incCantidad, incTipo);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.add(insumoActalizar);
                 acceso = REGISTROS;
