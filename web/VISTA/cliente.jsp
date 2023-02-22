@@ -196,7 +196,7 @@
                                                 <td>
                                         <center>
                                             <a href="Cliente?accion=editar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-warning">Actualizar</a>
-                                            <a href="#" class="btn btn-danger">Eliminar</a>
+                                            <a href="Cliente?accion=eliminar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-danger">Eliminar</a>
                                         </center>
                                         </td>
                                         </tr>

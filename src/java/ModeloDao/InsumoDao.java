@@ -24,7 +24,7 @@ public class InsumoDao implements crud_insumo {
     String LISTAR_ID = "CALL SELECT_ID_INSUMO(?)";
     String CREAR = "CALL INSERT_INSUMOS(?,?,?,?,?)";
     String ACTUALIZAR = "CALL UPDATE_INSUMOS(?,?,?,?,?)";
-    String ELIMINAR = "CALL DELETE_Cliente(?)";
+    String ELIMINAR = "CALL DELETE_INSUMOS(?)";
 
     @Override
     public List listar() {

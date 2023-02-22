@@ -38,6 +38,10 @@ public class Producto extends HttpServlet {
                 acceso = REGISTROS;
                 break;
             case "eliminar":
+                idProducto = Integer.parseInt((String) request.getParameter("idProducto"));
+                /* ========== ENVIO EL OBJETO A LA DB=========*/
+                DAO.delete(idProducto);
+                acceso = REGISTROS;
                 break;
             case "editar":
                 request.setAttribute("idProducto", request.getParameter("idProducto"));
@@ -75,7 +79,7 @@ public class Producto extends HttpServlet {
 
             case "Actualizar":
                 idProducto = Integer.parseInt(request.getParameter("txt-idProducto"));
-                System.out.println("ID_PRODUCTO "+idProducto);
+                System.out.println("ID_PRODUCTO " + idProducto);
                 proNombre = request.getParameter("txtNombre");
                 proCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                 proPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
