@@ -114,51 +114,42 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Clientes</h1>                
+                <h1>ACTUALIZAR REGISTRO</h1>                
             </div><!-- End Page Title -->
 
             <section class="section">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="p-2">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
-                                <form action="Insumo" method="post">
+                                <form action="Registro" method="post">
                                     <%
                                         RegistroDao dao = new RegistroDao();
-                                        int id = Integer.parseInt((String) request.getParameter("idInsumo"));
+                                        int id = Integer.parseInt((String) request.getParameter("idRegistro"));
                                         REGISTROS reg = (REGISTROS)dao.list(id);
                                         %>
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Nombre</label>
-                                            <input type="hidden" class="form-control" name="txt-idRegistro" <%= reg.getIdRegistro()%>">
-                                            <input type="text" class="form-control" name="txtNombre" value="<%= reg.getRegNombre()%>">
-                                        </div>
+                                            <label class="form-label">Fecha</label>
+                                            <input type="hidden" class="form-control" name="idRegistro" value="<%= reg.getIdRegistro()%>">
+                                            <input type="date" class="form-control" name="txtFecha" value="<%= reg.getRegFecha()%>">
+                                            </div>
                                         <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Precio</label>
-                                            <input type="text" class="form-control" name="txtPrecio" value="<%= reg.getRegPrecio()%>">
-                                        </div>                                        
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Cantidad</label>
-                                            <input type="text" class="form-control" name="txtCantidad" value="<%= reg.getRegCantidad()%>">
-                                        </div>
+                                            <label class="form-label">Numero</label>
+                                            <input type="text" class="form-control" name="txtRegistro" value="<%= reg.getRegNumero()%>">
+                                        </div>        
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" name="txtTipo" value="<%= reg.getRegTipo()%>">
+                                            <select class="form-control" name="txtTipo">
+                                                    <option value="Gasto">GASTO</option>
+                                                    <option value="Ganancia">GANANCIA</option>
+                                                </select>
                                         </div>                                       
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
-                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
+                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
                                         </div>
                                     </div>
                                 </form>

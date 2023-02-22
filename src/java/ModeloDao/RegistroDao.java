@@ -2,7 +2,7 @@ package ModeloDao;
 
 import Conexion.Conexion;
 import Interfaces.crud_registro;
-import Modelo.Registro;
+import Modelo.REGISTROS;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,28 +12,28 @@ import java.util.List;
 
 public class RegistroDao implements crud_registro {
 
-    Registro c = new Registro();
+    REGISTROS c = new REGISTROS();
     Conexion cn = new Conexion();
     CallableStatement cs;
     Connection con;
     ResultSet rs;
 
     /* ============== VARIABLES PARA PROCEDIMIENTOS ALMACENADOS ==============*/
-    String LISTAR = "CALL SELECT_Registro_ALL()";
+    String LISTAR = "CALL SELECT_REGISTROS()";
     String LISTAR_ID = "CALL A_S_ID_Registro(?)";
-    String CREAR = "CALL INSERT_RegistroS(?,?,?,?,?,?,?,?,?)";
-    String ACTUALIZAR = "CALL UPDATE_Registro(?,?,?,?,?,?,?,?,?)";
-    String ELIMINAR = "CALL DELETE_Registro(?)";
+    String CREAR = "CALL INSERT_REGISTRO(?,?,?)";
+    String ACTUALIZAR = "CALL UPDATE_REGISTRO(?,?,?,?)";
+    String ELIMINAR = "CALL DELETE_REGISTRO(?)";
 
     @Override
     public List listar() {
-        ArrayList<Registro> lista = new ArrayList<>();
+        ArrayList<REGISTROS> lista = new ArrayList<>();
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR);
             rs = cs.executeQuery();
             while (rs.next()) {
-                Registro cli = new Registro();
+                REGISTROS cli = new REGISTROS();
                 cli.setIdRegistro(rs.getInt(1));
                 cli.setRegFecha(rs.getString(2));
                 cli.setRegNumero(rs.getInt(3));
@@ -48,7 +48,7 @@ public class RegistroDao implements crud_registro {
     }
 
     @Override
-    public Registro list(int id) {
+    public REGISTROS list(int id) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(LISTAR_ID);
@@ -68,7 +68,7 @@ public class RegistroDao implements crud_registro {
     }
 
     @Override
-    public String add(Registro cli) {
+    public String add(REGISTROS cli) {
         try {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(CREAR);
@@ -86,7 +86,7 @@ public class RegistroDao implements crud_registro {
     }
 
     @Override
-    public String update(Registro cli) {
+    public String update(REGISTROS cli) {
         try {
             con = (Connection) cn.getConexion();
             CallableStatement cs = con.prepareCall(ACTUALIZAR);

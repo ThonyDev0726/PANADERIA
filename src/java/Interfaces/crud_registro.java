@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Modelo.Registro;
+import Modelo.REGISTROS;
 import java.util.List;
 
 /**
@@ -11,11 +11,11 @@ public interface crud_registro {
 
     public List listar();
 
-    public Registro list(int idRegistro);
+    public REGISTROS list(int idRegistro);
 
-    public String add(Registro cli);
+    public String add(REGISTROS cli);
 
-    public String update(Registro cli);
+    public String update(REGISTROS cli);
 
     public String delete(int id);
 

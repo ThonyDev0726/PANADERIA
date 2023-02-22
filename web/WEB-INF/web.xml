@@ -16,6 +16,10 @@
         <servlet-name>Producto</servlet-name>
         <servlet-class>Controlador.Producto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Registro</servlet-name>
+        <servlet-class>Controlador.Registro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Producto</servlet-name>
         <url-pattern>/Producto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registro</servlet-name>
+        <url-pattern>/Registro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

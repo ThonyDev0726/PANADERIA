@@ -1,3 +1,7 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.*"%>
+<%@page import="ModeloDao.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +22,10 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <!-- Vendor CSS Files -->
+        <!-- archivos CSS  tablas -->
+        <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css" rel="stylesheet">
+
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -97,10 +104,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
-                        <i class="bi bi-grid"></i>
-                        <span>Usuario</span>
-                    </a>-->
+                    <!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
+                                            <i class="bi bi-grid"></i>
+                                            <span>Usuario</span>
+                                        </a>-->
                 </li>
             </ul>            
         </aside><!-- End Sidebar-->
@@ -118,23 +125,28 @@
                             <div class="card-body">
                                 <div class="p-2">
                                     <div class="row">
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Fecha</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Numero</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col-sm-6 m-b30">
-                                            <label class="form-label">Tipo</label>
-                                            <input type="text" class="form-control" >
-                                        </div>           
+                                        <form action="Registro" method="post">
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Fecha</label>
+                                                <input type="date" class="form-control" name="txtFecha">
+                                            </div>
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Numero</label>
+                                                <input type="number" class="form-control" name="txtRegistro">
+                                            </div>
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Tipo</label>
+                                                <select class="form-control" name="txtTipo">
+                                                    <option value="Gasto">GASTO</option>
+                                                    <option value="Ganancia">GANANCIA</option>
+                                                </select>
+                                            </div>           
 
-                                        <div class="col-sm-2 m-b30">
-                                            <label class="form-label"> </label>
-                                            <input type="submit" class="form-control btn btn-primary" value="Registrar">
-                                        </div>
+                                            <div class="col-sm-2 m-b30">
+                                                <label class="form-label"> </label>
+                                                <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +157,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="example">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" scope="col">#</th>
@@ -156,18 +168,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <%
+                                                    RegistroDao daoCh = new RegistroDao();
+                                                    List<REGISTROS> listCh = daoCh.listar();
+                                                    Iterator<REGISTROS> iterCh = listCh.iterator();
+                                                    REGISTROS ch = null;
+                                                    while (iterCh.hasNext()) {
+                                                        ch = iterCh.next();
+                                            %>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td class="text-center">2016-05-25</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">gasto</td>
+                                                <th scope="row"><%= ch.getIdRegistro()%></th>
+                                                <td class="text-center"><%= ch.getRegFecha()%></td>
+                                                <td class="text-center"><%= ch.getRegNumero()%></td>
+                                                <td class="text-center"><%= ch.getRegTipo()%></td>
                                                 <td>
                                         <center>
-                                            <a href="#" class="btn btn-warning">Actualizar</a>
-                                            <a href="#" class="btn btn-danger">Eliminar</a>
+                                            <a href="Registro?accion=editar&idRegistro=<%= ch.getIdRegistro()%>" class="btn btn-warning">Actualizar</a>
+                                            <a href="Registro?accion=eliminar&idRegistro=<%= ch.getIdRegistro()%>" class="btn btn-danger">Eliminar</a>
                                         </center>
                                         </td>
                                         </tr>
+                                        <%}%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -193,6 +214,25 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
+        <!-- PDFS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" ></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.html5.min.js" ></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.print.min.js" ></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
 
     </body>
 

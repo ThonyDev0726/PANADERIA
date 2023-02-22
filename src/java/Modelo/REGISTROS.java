@@ -1,19 +1,19 @@
 package Modelo;
 
-public class Registro {
+public class REGISTROS {
 
     public Integer idRegistro;
     public String regFecha;
     public Integer regNumero;
     public String regTipo;
 
-    public Registro(String regFecha, Integer regNumero, String regTipo) {
+    public REGISTROS(String regFecha, Integer regNumero, String regTipo) {
         this.regFecha = regFecha;
         this.regNumero = regNumero;
         this.regTipo = regTipo;
     }
 
-    public Registro(Integer idRegistro, String regFecha, Integer regNumero, String regTipo) {
+    public REGISTROS(Integer idRegistro, String regFecha, Integer regNumero, String regTipo) {
         this.idRegistro = idRegistro;
         this.regFecha = regFecha;
         this.regNumero = regNumero;
@@ -21,7 +21,7 @@ public class Registro {
     }
     
 
-    public Registro() {
+    public REGISTROS() {
     }
 
     public Integer getIdRegistro() {

@@ -24,7 +24,10 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <!-- Vendor CSS Files -->
+        <!-- archivos CSS  tablas -->
+        <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css" rel="stylesheet">
+
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -103,10 +106,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
-                        <i class="bi bi-grid"></i>
-                        <span>Usuario</span>
-                    </a>-->
+                    <!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
+                                            <i class="bi bi-grid"></i>
+                                            <span>Usuario</span>
+                                        </a>-->
                 </li>
             </ul>
         </aside><!-- End Sidebar-->
@@ -213,11 +216,23 @@
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
 
-        <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+        <!-- PDFS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" ></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.html5.min.js" ></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.print.min.js" ></script>
         <script>
             $(document).ready(function () {
-                $('#example').DataTable();
+                $('#example').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
             });
         </script>
     </body>

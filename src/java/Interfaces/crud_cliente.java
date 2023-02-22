@@ -1,7 +1,7 @@
 package Interfaces;
 
 import Modelo.CLIENTES;
-import Modelo.Registro;
+import Modelo.REGISTROS;
 import java.util.List;
 
 /**
