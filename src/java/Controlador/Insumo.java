@@ -25,14 +25,13 @@ public class Insumo extends HttpServlet {
     public String incTipo;
     /**/
     String REGISTROS = "VISTA/insumo.jsp";
-    String EDITAR = "VISTA/insumo.jsp";
+    String EDITAR = "VISTA/insumo-actualizar.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
         //========================================================================================== GLOBALES
-        String LOGIN = "views/Login.jsp";
 
         switch (action) {
             case "registro-clientes":
@@ -43,7 +42,11 @@ public class Insumo extends HttpServlet {
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.delete(idInsumo);
                 acceso = REGISTROS;
-            case "editar-a":
+                break;
+            case "editar":
+                request.setAttribute("idInsumo", request.getParameter("idInsumo"));
+                acceso = EDITAR;
+                break;
             default:
                 acceso = REGISTROS;
         }
@@ -84,7 +87,7 @@ public class Insumo extends HttpServlet {
                 /* ========== DAR VALORES AL OBJETO =========*/
                 Modelo.INSUMOS insumoActalizar = new Modelo.INSUMOS(idInsumo, incNombre, incPrecio, incCompra, incCantidad, incTipo);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
-                DAO.add(insumoActalizar);
+                DAO.update(insumoActalizar);
                 acceso = REGISTROS;
                 break;
             default:

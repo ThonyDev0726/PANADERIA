@@ -155,7 +155,7 @@
 
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
-                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
+                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
                                         </div>
                                     </div>
                                 </form>

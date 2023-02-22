@@ -21,9 +21,9 @@ public class InsumoDao implements crud_insumo {
 
     /* ============== VARIABLES PARA PROCEDIMIENTOS ALMACENADOS ==============*/
     String LISTAR = "CALL SELECT_INSUMO()";
-    String LISTAR_ID = "CALL A_S_ID_Cliente(?)";
+    String LISTAR_ID = "CALL SELECT_ID_INSUMO(?)";
     String CREAR = "CALL INSERT_INSUMOS(?,?,?,?,?)";
-    String ACTUALIZAR = "CALL UPDATE_Cliente(?,?,?,?,?,?,?,?,?)";
+    String ACTUALIZAR = "CALL UPDATE_INSUMOS(?,?,?,?,?)";
     String ELIMINAR = "CALL DELETE_Cliente(?)";
 
     @Override
@@ -43,9 +43,9 @@ public class InsumoDao implements crud_insumo {
                 cli.setIncTipo(rs.getString(6));
                 lista.add(cli);
             }
-            System.out.println("SE ESTA LISTANDO LOS ClienteS");
+            System.out.println("SE ESTA LISTANDO LOS INSUMOS");
         } catch (SQLException ex) {
-            System.out.println("ERROR AL LISTAR LOS ClienteS" + ex);
+            System.out.println("ERROR AL LISTAR LOS INSUMOS" + ex);
         }
         return lista;
     }
@@ -61,8 +61,9 @@ public class InsumoDao implements crud_insumo {
                 c.setIdInsumo(rs.getInt(1));
                 c.setIncNombre(rs.getString(2));
                 c.setIncPrecio(rs.getFloat(3));
-                c.setIncCantidad(rs.getInt(4));
-                c.setIncTipo(rs.getString(5));
+                c.setIncCompra(rs.getString(4));
+                c.setIncCantidad(rs.getInt(5));
+                c.setIncTipo(rs.getString(6));
             }
             System.out.println("SE ESTA LISTANDO EL Cliente");
         } catch (SQLException ex) {

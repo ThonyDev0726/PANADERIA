@@ -185,7 +185,7 @@
                                                 <td class="text-center"><%= ch.getIncCantidad()%> unidades</td>
                                                 <td class="text-center"><%= ch.getIncTipo()%></td>
                                                 <td class="text-center">
-                                                    <a href="#" class="btn btn-warning">Actualizar</a>
+                                                    <a href="Insumo?accion=editar&idInsumo=<%= ch.getIdInsumo()%>" class="btn btn-warning">Actualizar</a>
                                                     <a href="#" class="btn btn-danger">Eliminar</a>
                                                 </td>
                                             </tr>

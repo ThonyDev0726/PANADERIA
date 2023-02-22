@@ -114,20 +114,11 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Clientes</h1>                
+                <h1>ACTUALIZAR PRODUCTO</h1>                
             </div><!-- End Page Title -->
 
             <section class="section">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="p-2">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
@@ -140,7 +131,8 @@
                                     <div class="row">
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Nombre</label>
-                                             <input type="hidden" class="form-control" name="txt-idProducto" <%= pro.getIdProducto()%>">
+                                             <input type="hidden" class="form-control" name="txt-idProducto" value="<%= pro.getIdProducto()%>">
+                                             <input type="hidden" class="form-control" name="txtElaboracion" value="<%= pro.getProElaboracion()%>">
                                             <input type="text" class="form-control" name="txtNombre" value="<%= pro.getProNombre()%>">
                                         </div>
                                         <div class="col-sm-6 m-b30">
@@ -153,7 +145,7 @@
                                         </div>
                                         <div class="col-sm-2 m-b30">
                                             <label class="form-label"> </label>
-                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
+                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
                                         </div>
                                     </div>
                                 </form>

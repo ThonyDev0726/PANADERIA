@@ -22,7 +22,7 @@ public class ProductoDao implements crud_producto {
     String LISTAR = "CALL SELECT_PRODUCTOS()";
     String LISTAR_ID = "CALL A_S_ID_Producto(?)";
     String CREAR = "CALL INSERT_PRODUCTO(?,?,?,?)";
-    String ACTUALIZAR = "CALL UPDATE_Producto(?,?,?,?,?,?,?,?,?)";
+    String ACTUALIZAR = "CALL UPDATE_Producto(?,?,?,?,?)";
     String ELIMINAR = "CALL DELETE_Producto(?)";
 
     @Override

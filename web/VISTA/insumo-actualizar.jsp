@@ -103,10 +103,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
-                        <i class="bi bi-grid"></i>
-                        <span>Usuario</span>
-                    </a>-->
+                    <!--                    <a class="nav-link collapsed" href="Controller?accion=usuario">
+                                            <i class="bi bi-grid"></i>
+                                            <span>Usuario</span>
+                                        </a>-->
                 </li>
             </ul>
         </aside><!-- End Sidebar-->
@@ -114,60 +114,48 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Clientes</h1>                
+                <h1>ACTUALIZAR INSUMO</h1>                
             </div><!-- End Page Title -->
 
             <section class="section">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="p-2">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-lg-12">
                         <div class="card p-2">
                             <div class="card-body">
-                                <form action="Cliente" method="post">
-                                       <%
-                                        InsumoDao dao = new InsumoDao();
-                                        int id = Integer.parseInt((String) request.getParameter("idInsumo"));
-                                        INSUMOS inc = (INSUMOS)dao.list(id);
-                                        %>
+                                <form action="Insumo" method="post">
+                                    <%
+                                     InsumoDao dao = new InsumoDao();
+                                     int id = Integer.parseInt((String) request.getParameter("idInsumo"));
+                                     INSUMOS inc = (INSUMOS)dao.list(id);
+                                    %>
+                                    <div class="row">                                        
                                         <div class="row">
                                             <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Cedula</label>
-                                                <input type="hidden" class="form-control" name="txt-idInsumo" <%= inc.getIdInsumo()%>">
-                                                <input type="text" class="form-control" name="txt-cedula" value="<%= inc.geIncCedula()%>">
+                                                <label class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" name="txtNombre" value="<%= inc.getIncNombre()%>"> 
+                                                <input type="hidden" class="form-control" name="txt-idInsumo" value="<%= inc.getIdInsumo()%>"> 
                                             </div>
                                             <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Nombres</label>
-                                                <input type="text" class="form-control" name="txt-nombres" value="<%= inc.getIncNombres()%>">
+                                                <label class="form-label">Precio</label>
+                                                <input type="text" class="form-control" name="txtPrecio" value="<%= inc.getIncPrecio()%>">
+                                            </div>                                        
+                                            <div class="col-sm-6 m-b30">
+                                                <label class="form-label">Cantidad</label>
+                                                <input type="text" class="form-control" name="txtCantidad" value="<%= inc.getIncCantidad()%>">
                                             </div>
                                             <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Apellidos</label>
-                                                <input type="text" class="form-control" name="txt-apellidos" value="<%= inc.getIncApellidos()%>" >
-                                            </div>                                          
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Direccion</label>
-                                                <input type="text" class="form-control" name="txt-direccion" value="<%= inc.getIncDireccion()%>">
-                                            </div>
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Telefono</label>
-                                                <input type="text" class="form-control" name="txt-telefono" value="<%= inc.getIncTelefono()%>">
-                                            </div>
-
-
-                                            <div class="col-sm-2 m-b30">
-                                                <label class="form-label"> </label>
-                                                <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
-                                            </div>
+                                                <label class="form-label">Tipo</label>
+                                                <input type="text" class="form-control" name="txtTipo" value="<%= inc.getIncTipo()%>">
+                                            </div>   
                                         </div>
-                                    </form>
+
+                                        <div class="col-sm-2 m-b30">
+                                            <label class="form-label"> </label>
+                                            <input type="submit" class="form-control btn btn-primary" name="accion" value="Actualizar">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

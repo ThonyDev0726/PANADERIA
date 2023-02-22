@@ -179,7 +179,7 @@
                                                 <td class="text-center"><%= ch.getProCantidad()%> unidades</td>
                                                 <td class="text-center"><%= ch.getProElaboracion()%></td>
                                                 <td class="text-center">
-                                                    <a href="#" class="btn btn-warning">Actualizar</a>
+                                                    <a href="Producto?accion=editar&idProducto=<%= ch.getIdProducto()%>" class="btn btn-warning">Actualizar</a>
                                                     <a href="#" class="btn btn-danger">Eliminar</a>
                                                 </td>
                                             </tr>

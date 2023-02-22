@@ -31,6 +31,15 @@ public class CLIENTES{
         this.cliDireccion = cliDireccion;
         this.cliTelefono = cliTelefono;
     }
+
+    public CLIENTES(Integer idCliente, String cliNombres, String cliCedula, String cliApellidos, String cliDireccion, String cliTelefono) {
+        this.idCliente = idCliente;
+        this.cliNombres = cliNombres;
+        this.cliCedula = cliCedula;
+        this.cliApellidos = cliApellidos;
+        this.cliDireccion = cliDireccion;
+        this.cliTelefono = cliTelefono;
+    }
     
 
     public Integer getIdCliente() {

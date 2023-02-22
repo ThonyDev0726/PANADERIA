@@ -22,7 +22,7 @@ public class ClienteDao  implements crud_cliente{
     String LISTAR = "CALL SELECT_CLIENTES()";
     String LISTAR_ID = "CALL A_S_ID_Cliente(?)";
     String CREAR = "CALL INSERT_CLIENTE(?,?,?,?,?,?)";
-    String ACTUALIZAR = "CALL UPDATE_Cliente(?,?,?,?,?,?,?,?)";
+    String ACTUALIZAR = "CALL UPDATE_Cliente(?,?,?,?,?,?)";
     String ELIMINAR = "CALL DELETE_Cliente(?)";
 
     @Override
@@ -102,9 +102,8 @@ public class ClienteDao  implements crud_cliente{
             cs.setString(2, cli.getCliCedula());
             cs.setString(3, cli.getCliNombres());
             cs.setString(4, cli.getCliApellidos());
-            cs.setString(5, cli.getCliFecha());
-            cs.setString(6, cli.getCliDireccion());
-            cs.setString(7, cli.getCliTelefono());
+            cs.setString(5, cli.getCliDireccion());
+            cs.setString(6, cli.getCliTelefono());
             System.out.println("SE ACTUALIZO EL Cliente CON EXITO");
             cs.execute();
         } catch (SQLException ex) {

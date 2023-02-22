@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.CLIENTES;
 import ModeloDao.ClienteDao;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -77,18 +78,20 @@ public class Cliente extends HttpServlet {
                 break;
             case "Actualizar":
                 idCliente = Integer.parseInt(request.getParameter("txt-idCliente"));
+                System.out.println("ID cliente" +idCliente);
                 cliNombres = request.getParameter("txt-nombres");
                 cliApellidos = request.getParameter("txt-apellidos");
-                cliFecha = request.getParameter("txt-fecha");
+                cliFecha = null;
                 cliCedula = request.getParameter("txt-cedula");
                 cliTelefono = request.getParameter("txt-telefono");
                 cliDireccion = request.getParameter("txt-direccion");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.CLIENTES clienteActualizar = new Modelo.CLIENTES(idCliente,cliNombres, cliCedula, cliApellidos, cliFecha, cliDireccion, cliTelefono);
+                CLIENTES clienteActualizar = new CLIENTES(idCliente, cliNombres, cliCedula, cliApellidos, cliDireccion, cliTelefono);
 
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 DAO.update(clienteActualizar);
                 acceso = REGISTROS;
+                break;
 
             default:
                 acceso = REGISTROS;

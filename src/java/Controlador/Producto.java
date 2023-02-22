@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controlador;
 
 import ModeloDao.ProductoDao;
@@ -28,7 +24,7 @@ public class Producto extends HttpServlet {
     public Integer proCantidad;
     /**/
     String REGISTROS = "VISTA/producto.jsp";
-    String EDITAR = "VISTA/producto.jsp";
+    String EDITAR = "VISTA/producto-actualizar.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,8 +37,12 @@ public class Producto extends HttpServlet {
             case "registro-clientes":
                 acceso = REGISTROS;
                 break;
-            case "eliminar":                
-            case "editar-a":
+            case "eliminar":
+                break;
+            case "editar":
+                request.setAttribute("idProducto", request.getParameter("idProducto"));
+                acceso = EDITAR;
+                break;
             default:
                 acceso = REGISTROS;
         }
@@ -72,18 +72,22 @@ public class Producto extends HttpServlet {
                 DAO.add(producto);
                 acceso = REGISTROS;
                 break;
-            case "editar-a":
 
             case "Actualizar":
                 idProducto = Integer.parseInt(request.getParameter("txt-idProducto"));
+                System.out.println("ID_PRODUCTO "+idProducto);
                 proNombre = request.getParameter("txtNombre");
                 proCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                 proPrecio = Float.parseFloat(request.getParameter("txtPrecio"));
                 proElaboracion = request.getParameter("txtElaboracion");
                 /* ========== DAR VALORES AL OBJETO =========*/
-                Modelo.PRODUCTOS productoActalizar = new Modelo.PRODUCTOS(idProducto, proNombre, proCantidad, proPrecio, proElaboracion);
+                Modelo.PRODUCTOS productoActalizar = new Modelo.PRODUCTOS(idProducto,
+                        proNombre,
+                        proCantidad,
+                        proPrecio,
+                        proElaboracion);
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
-                DAO.add(productoActalizar);
+                DAO.update(productoActalizar);
                 acceso = REGISTROS;
                 break;
             default:
