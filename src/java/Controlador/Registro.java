@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 
 public class Registro extends HttpServlet {
 
@@ -16,8 +17,10 @@ public class Registro extends HttpServlet {
 
     public Integer idRegistro;
     public String regFecha;
-    public Integer regNumero;
-    public String regTipo;
+    public Integer regCantidad;
+    public Integer fkCliente;
+    public Integer fkProducto;
+    public String regTotal;
     /**/
     String REGISTROS = "VISTA/registro.jsp";
     String EDITAR = "VISTA/registro-actualizar.jsp";
@@ -58,19 +61,22 @@ public class Registro extends HttpServlet {
 
         switch (action) {
             case "Registrar":
-                regFecha = request.getParameter("txtFecha");
-                regNumero = Integer.parseInt(request.getParameter("txtRegistro"));
-                regTipo = request.getParameter("txtTipo");               
-                DAO.add(new REGISTROS(regFecha, regNumero, regTipo));
+                regFecha = LocalDate.now().toString();
+                regCantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+                regTotal = request.getParameter("txtTotal");
+                fkCliente = obtenerNumero(request.getParameter("pkCliente"));
+                fkProducto = obtenerNumero(request.getParameter("fkProducto"));
+                System.out.println("Listo todo");
+                DAO.add(new REGISTROS(regFecha, regCantidad, regTotal, fkCliente, fkProducto));
                 acceso = REGISTROS;
                 break;
             case "Actualizar":
                 /* ========== ENVIO EL OBJETO A LA DB=========*/
                 idRegistro = Integer.parseInt((String) request.getParameter("idRegistro"));
                 regFecha = request.getParameter("txtFecha");
-                regNumero = Integer.parseInt(request.getParameter("txtRegistro"));
-                regTipo = request.getParameter("txtTipo");
-                reg = new REGISTROS(idRegistro, regFecha, regNumero, regTipo);
+                regCantidad = Integer.parseInt(request.getParameter("txtRegistro"));
+                regTotal = request.getParameter("txtTipo");
+                reg = new REGISTROS(idRegistro, regFecha, regCantidad, regTotal);
                 DAO.update(reg);
                 acceso = REGISTROS;
                 break;
@@ -81,4 +87,15 @@ public class Registro extends HttpServlet {
         view.forward(request, response);
     }
 
+    public Integer obtenerNumero(String cadena) {
+        String ingreso = cadena;
+        char[] cadena_div = ingreso.toCharArray();
+        String respuesta = "";
+        for (int i = 0; i < cadena_div.length; i++) {
+            if (Character.isDigit(cadena_div[i])) {
+                respuesta += cadena_div[i];
+            }
+        }
+        return Integer.parseInt(respuesta);
+    }
 }

@@ -126,23 +126,35 @@
                                 <div class="p-2">
                                     <div class="row">
                                         <form action="Registro" method="post">
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Fecha</label>
-                                                <input type="date" class="form-control" name="txtFecha">
+                                            <div class="row">
+                                                <div class="col-xl-6 m-b30">
+                                                    <label class="form-label">Cliente</label>
+                                                    <input type="text" class="form-control" name="pkCliente" list="listaClientes">
+                                                </div>
+                                                <div class="col-sm-6 m-b30">
+                                                    <label class="form-label">Cantidad</label>
+                                                    <input type="number" id="lbl-cantidad" class="form-control" name="txtCantidad">
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Numero</label>
-                                                <input type="number" class="form-control" name="txtRegistro">
+                                            <div class="row">
+                                                <div class="col-sm-6 m-b30">
+                                                    <label class="form-label">Producto</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="fkProducto" class="form-control" id="lblNombreProd">
+                                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Buscar</button>
+                                                    </div>
+                                                </div>           
+                                                <div class="col-sm-6 m-b30">
+                                                    <label class="form-label">Precio</label>
+                                                    <input type="text" class="form-control" id="lblPrecio">
+                                                    <input type="hidden" class="form-control" id="idProducto">
+                                                </div>    
+                                                <div class="col-sm-6 m-b30">
+                                                    <label class="form-label">TotalVenta</label>
+                                                    <input type="text" class="form-control" id="lblTotal" name="txtTotal" onclick="total()">
+                                                </div>           
                                             </div>
-                                            <div class="col-sm-6 m-b30">
-                                                <label class="form-label">Tipo</label>
-                                                <select class="form-control" name="txtTipo">
-                                                    <option value="Gasto">GASTO</option>
-                                                    <option value="Ganancia">GANANCIA</option>
-                                                </select>
-                                            </div>           
-
-                                            <div class="col-sm-2 m-b30">
+                                            <div class="col-sm-2 m-b30 mt-2">
                                                 <label class="form-label"> </label>
                                                 <input type="submit" class="form-control btn btn-primary" name="accion" value="Registrar">
                                             </div>
@@ -152,19 +164,28 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        function total() {
+                            var lblCantidad = document.getElementById('lbl-cantidad');
+                            var lblPrecio = document.getElementById('lblPrecio');
+                            var total = (lblPrecio.value * lblCantidad.value);
+                            document.getElementById('lblTotal').value = total;
+                        }
+                    </script>
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body p-2">
                                 <div class="table-responsive">
                                     <table class="table" id="example">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" scope="col">#</th>
                                                 <th class="text-center" scope="col">Fecha</th>
-                                                <th class="text-center" scope="col">Numero</th>
-                                                <th class="text-center" scope="col">Tipo</th>
-                                                <th class="text-center" scope="col">Accion</th>
+                                                <th class="text-center" scope="col">Cantidad</th>
+                                                <th class="text-center" scope="col">Total Venta</th>
+                                                <th class="text-center" scope="col">Cliente</th>
+                                                <th class="text-center" scope="col">Producto</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -179,16 +200,12 @@
                                             <tr>
                                                 <th scope="row"><%= ch.getIdRegistro()%></th>
                                                 <td class="text-center"><%= ch.getRegFecha()%></td>
-                                                <td class="text-center"><%= ch.getRegNumero()%></td>
-                                                <td class="text-center"><%= ch.getRegTipo()%></td>
-                                                <td>
-                                        <center>
-                                            <a href="Registro?accion=editar&idRegistro=<%= ch.getIdRegistro()%>" class="btn btn-warning">Actualizar</a>
-                                            <a href="Registro?accion=eliminar&idRegistro=<%= ch.getIdRegistro()%>" class="btn btn-danger">Eliminar</a>
-                                        </center>
-                                        </td>
-                                        </tr>
-                                        <%}%>
+                                                <td class="text-center"><%= ch.getRegCantidad()%></td>
+                                                <td class="text-center"><%= ch.getRegTipo()%></td>                                                
+                                                <td class="text-center"><%= ch.getRegCliente()%></td>                                                
+                                                <td class="text-center"><%= ch.getRegProducto()%></td>                                                
+                                            </tr>
+                                            <%}%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -199,6 +216,76 @@
             </section>
 
         </main><!-- End #main -->
+
+
+        <datalist id="listaClientes">
+            <%
+                            ClienteDao daoCli = new ClienteDao();
+                            List<CLIENTES> listCli = daoCli.listar();
+                            Iterator<CLIENTES> iterCli = listCli.iterator();
+                            CLIENTES cli = null;
+                            while (iterCli.hasNext()) {
+                                cli = iterCli.next();
+            %>
+            <option value="<%= cli.getIdCliente()%> <%= cli.getCliNombres()%> <%= cli.getCliApellidos()%>"><%= cli.getIdCliente()%>.- <%= cli.getCliNombres()%> <%= cli.getCliApellidos()%></option>
+            <%}%>
+        </datalist>
+
+
+        <div class="modal fade" id="exampleModalCenter">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content modal-xl">                                
+                    <div class="modal-body">
+                        <center>
+                            <h3 class="modal-title text-primary"><b>PRODUCTOS</b></h3>
+                        </center>
+                        <div class="table-responsive">
+                            <table id="example3" class="display table header-border table-hover verticle-middle" style="min-width: 845px">
+                                <thead>
+                                    <tr>                                                
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Producto</th>
+                                        <th class="text-center">P.V.P</th>
+                                        <th class="text-center">Stock</th>                                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ============ INICIO DE LA CARD PRODUCTO ============ -->      
+                                    <%
+                                        ProductoDao daoProd = new ProductoDao();
+                                        List<PRODUCTOS> listProd = daoProd.listar();
+                                        Iterator<PRODUCTOS> iterProd = listProd.iterator();
+                                        PRODUCTOS prod = null;
+                                        while (iterProd.hasNext()) {
+                                            prod = iterProd.next();
+                                    %>
+                                    <tr onclick="callmeProd(this)">                                                                                                                                          
+                                        <td class="text-center text-muted"><%= prod.getIdProducto()%></td>                                                
+                                        <td class="text-center text-muted"><%= prod.getProNombre()%></td>                                                
+                                        <td class="text-center text-muted"><%= prod.getProPrecio()%></td>                                         
+                                        <td class="text-center text-muted"><%= prod.getProCantidad()%></td>                                                
+                                    </tr>                                              
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            //METODO PARA AGREGAR LOS DATOS DEL MODAL EN LOS CAMPOS DE TEXTO
+            function callmeProd(e)
+            {
+                var myModalEl = document.getElementById('exampleModalCenter');
+                var modal = bootstrap.Modal.getInstance(myModalEl)
+                var tds = e.getElementsByTagName('td');
+                document.getElementById("idProducto").value = tds[0].innerHTML.trim();
+                document.getElementById("lblNombreProd").value = tds[0].innerHTML.trim() + ' ' + tds[1].innerHTML.trim();
+                document.getElementById("lblPrecio").value = tds[2].innerHTML.trim();
+                modal.hide();
+            }
+        </script>
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

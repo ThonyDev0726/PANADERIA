@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Modelo.PRODUCTOS;
 import Modelo.REGISTROS;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  *
  * @author perez
  */
-public interface crud_registro {
+public interface crud_registro{
 
     public List listar();
 

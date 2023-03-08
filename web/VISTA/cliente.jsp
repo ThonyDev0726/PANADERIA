@@ -24,7 +24,10 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <!-- Vendor CSS Files -->
+        <!-- archivos CSS  tablas -->
+        <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css" rel="stylesheet">
+
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -194,11 +197,11 @@
                                                 <td class="text-center text-uppercase"><%= ch.getCliDireccion()%></td>
                                                 <td class="text-center text-uppercase"><%= ch.getCliTelefono()%></td>
                                                 <td>
-                                        <center>
-                                            <a href="Cliente?accion=editar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-warning">Actualizar</a>
-                                            <a href="Cliente?accion=eliminar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-danger">Eliminar</a>
-                                        </center>
-                                        </td>
+                                                    <center>
+                                                        <a href="Cliente?accion=editar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-warning">Actualizar</a>
+                                                        <a href="Cliente?accion=eliminar&idCliente=<%= ch.getIdCliente()%>" class="btn btn-danger">Eliminar</a>
+                                                    </center>
+                                                </td>
                                         </tr>
                                         <%}%>
                                         </tbody>
@@ -216,11 +219,6 @@
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#example').DataTable();
-            });
-        </script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/vendor/chart.js/chart.umd.js"></script>
         <script src="assets/vendor/echarts/echarts.min.js"></script>

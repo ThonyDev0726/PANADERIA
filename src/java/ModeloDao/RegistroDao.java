@@ -21,7 +21,7 @@ public class RegistroDao implements crud_registro {
     /* ============== VARIABLES PARA PROCEDIMIENTOS ALMACENADOS ==============*/
     String LISTAR = "CALL SELECT_REGISTROS()";
     String LISTAR_ID = "CALL A_S_ID_Registro(?)";
-    String CREAR = "CALL INSERT_REGISTRO(?,?,?)";
+    String CREAR = "CALL INSERT_REGISTRO(?,?,?,?,?)";
     String ACTUALIZAR = "CALL UPDATE_REGISTRO(?,?,?,?)";
     String ELIMINAR = "CALL DELETE_REGISTRO(?)";
 
@@ -36,8 +36,10 @@ public class RegistroDao implements crud_registro {
                 REGISTROS cli = new REGISTROS();
                 cli.setIdRegistro(rs.getInt(1));
                 cli.setRegFecha(rs.getString(2));
-                cli.setRegNumero(rs.getInt(3));
+                cli.setRegCantidad(rs.getInt(3));
                 cli.setRegTipo(rs.getString(4));
+                cli.setRegCliente(rs.getString(5) + " " + rs.getString(6));
+                cli.setRegProducto(rs.getString(7));
                 lista.add(cli);
             }
             System.out.println("SE ESTA LISTANDO LOS RegistroS");
@@ -57,8 +59,10 @@ public class RegistroDao implements crud_registro {
             while (rs.next()) {
                 c.setIdRegistro(rs.getInt(1));
                 c.setRegFecha(rs.getString(2));
-                c.setRegNumero(rs.getInt(3));
+                c.setRegCantidad(rs.getInt(3));
                 c.setRegTipo(rs.getString(4));
+                c.setRegCliente(rs.getString(5));
+                c.setRegProducto(rs.getString(6));
             }
             System.out.println("SE ESTA LISTANDO EL Registro");
         } catch (SQLException ex) {
@@ -73,8 +77,10 @@ public class RegistroDao implements crud_registro {
             con = (Connection) cn.getConexion();
             cs = con.prepareCall(CREAR);
             cs.setString(1, cli.getRegFecha());
-            cs.setInt(2, cli.getRegNumero());
+            cs.setInt(2, cli.getRegCantidad());
             cs.setString(3, cli.getRegTipo());
+            cs.setInt(4, cli.getFkCliente());
+            cs.setInt(5, cli.getFkProducto());
             cs.execute();
             System.out.println("SE CREO EL Registro CON EXITO");
         } catch (SQLException ex) {
@@ -92,7 +98,7 @@ public class RegistroDao implements crud_registro {
             CallableStatement cs = con.prepareCall(ACTUALIZAR);
             cs.setInt(1, cli.getIdRegistro());
             cs.setString(2, cli.getRegFecha());
-            cs.setInt(3, cli.getRegNumero());
+            cs.setInt(3, cli.getRegCantidad());
             cs.setString(4, cli.getRegTipo());
             cs.execute();
         } catch (SQLException ex) {
